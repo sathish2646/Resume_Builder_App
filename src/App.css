@@ -645,6 +645,63 @@ button:hover {
 .resume-section.education .item:last-child {
   margin-bottom: 0;       
 }
+/* ///////////////////////////////education/////////// */
+.item {
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.degree {
+  font-size: 1.1rem;
+  font-weight: 700; /* bold */
+  color: #2c3e50;
+  margin: 0;
+}
+
+.right-info {
+  display: flex;
+  gap: 6px; /* spacing between year & score */
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.school {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  font-style: italic; /* italic for school/university */
+  color: #444;
+}
+/* ///////////////////////experience//////////////////// */
+.role {
+  font-size: 1.05rem;
+  font-weight: 700; /* bold for role */
+  color: #2c3e50;
+  margin: 0;
+}
+
+.date {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.company {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  font-style: italic; /* company italic */
+  color: #444;
+}
 
 
 /* Container for photo + name in single-column templates */
@@ -669,6 +726,7 @@ button:hover {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
     height: auto;
+    padding-right:90px
   }
 
   .editor {
@@ -680,7 +738,7 @@ button:hover {
     border: none;
     border-radius: 0;
     padding: 1rem;
-    width: 96%;
+    width: 97%;
     order: unset;
   }
 
@@ -694,7 +752,7 @@ button:hover {
   }
 
   #resume-preview {
-    width: 97%;
+    width: 100%;
     min-height: auto;
     padding: 10px;
   }
@@ -731,8 +789,8 @@ button:hover {
     margin-bottom: 10px;
   }
   button {
-    width: 50%;
-    margin: 0.4rem 0;
+    width: 40%;
+    margin-left: 1rem ;
   }
 
   

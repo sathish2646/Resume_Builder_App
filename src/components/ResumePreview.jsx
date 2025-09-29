@@ -7,7 +7,7 @@ export default function ResumePreview({
   styles,
   photo,
   template,
-  theme,
+  theme ,
   setSections,
   leftColColor = "#f3f4f6",
   leftColTextColor = "#f3f4f6",
@@ -116,17 +116,21 @@ export default function ResumePreview({
   // Render text content with clickable links
   const renderContent = (text) => {
     if (!text) return null;
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
-    return text.split(urlRegex).map((part, i) =>
-      urlRegex.test(part) ? (
-        <a key={i} href={part} target="_blank" rel="noopener noreferrer">
-          {part}
-        </a>
-      ) : (
-        part
-      )
-    );
+    const urlRegex = /(https?:\/\/[^\s]+|[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\/\S*)?)/g;
+    return text.split(urlRegex).map((part, i) => {
+      if (urlRegex.test(part)) {
+        const url = part.startsWith("http") ? part : `https://${part}`;
+        const displayText = url.replace(/^https?:\/\//, "");
+        return (
+          <a key={i} href={url} target="_blank" rel="noopener noreferrer">
+            {displayText}
+          </a>
+        );
+      }
+      return part;
+    });
   };
+
 
   // Render structured content
   // Render structured content
@@ -137,21 +141,29 @@ export default function ResumePreview({
     if (section.type === "experience") {
       return (section.jobs || []).map((job, i) => (
         <div key={i} className="item">
-          <h5>{job.role}</h5>
-          <p>{job.company}</p>
-          <span>{job.date}</span>
+          <div className="item-header">
+            <h5 className="role">{job.role}</h5>
+            <span className="date">{job.date}</span>
+          </div>
+          <p className="company">{job.company}</p>
         </div>
+
       ));
     }
 
     if (section.type === "education") {
       return (section.schools || []).map((s, i) => (
         <div key={i} className="item">
-          <h5>{s.degree}</h5>
-          <p>{s.school}</p>
-          <span>{s.year}</span>
-          {s.percentage && <p>{s.percentage}</p>}
+          <div className="item-header">
+            <h5 className="degree">{s.degree}</h5>
+            <div className="right-info">
+              <span className="year">{s.year}</span>
+              {s.percentage && <span className="percentage">({s.percentage})</span>}
+            </div>
+          </div>
+          <p className="school">{s.school}</p>
         </div>
+
       ));
     }
 
@@ -269,7 +281,7 @@ export default function ResumePreview({
                       className="left-col"
                       ref={provided.innerRef}
                       {...provided.droppableProps}
-                      style={{ backgroundColor: leftColColor , color: leftColTextColor }}
+                      style={{ backgroundColor: leftColColor, color: leftColTextColor }}
                     >
                       {photo && <img src={photo} alt="Profile" className="resume-photo" />}
                       <div className="contact-section">
