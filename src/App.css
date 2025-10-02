@@ -716,246 +716,43 @@ button:hover {
 }
 
 
-
-
-/* ///////////////////mobile responsive/////////////////// */
-/* =================== Mobile Responsive =================== */
-@media (max-width: 768px) {
-
+@media (max-width: 1024px) {
   .app {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    display: flex;
+    flex-direction: column;
     height: auto;
-    padding-right:90px
   }
 
-  .editor {
-    border-right: none;
-  }
-
-  .editor,
   .section-editor {
+    order: 2; /* Move edit section to top */
+    width: 100%;
     border: none;
-    border-radius: 0;
     padding: 1rem;
-    width: 97%;
-    order: unset;
-  }
-
-
-  .section-editor {
-    margin-top: 1rem;
+    box-sizing: border-box;
+    border-bottom: 1px solid #e5e7eb;
   }
 
   .preview {
-    padding: 0.5rem;
+    order: 3; /* Resume preview comes after edit section */
+    padding: 1rem;
+    overflow-x: auto;
   }
 
-  #resume-preview {
+  .editor {
+    order: 1; /* Editor panel comes last */
     width: 100%;
-    min-height: auto;
-    padding: 10px;
-  }
-
-  .resume {
-    width: 100%;
-    padding: 15px;
-    border-radius: 6px;
-  }
-
-  /* Resume templates */
-  .resume.two-column,
-  .resume-profile-two-column {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .resume.two-column .left-col,
-  .resume.two-column .right-col,
-  .resume-profile-two-column .bottom-row {
-    width: 100%;
-    max-width: 100%;
     border: none;
-    padding: 10px 0;
+    padding: 1rem;
+    box-sizing: border-box;
   }
 
-  .top-row {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
+  ul li {
+    font-size: 0.9rem;
+    padding: 0.4rem;
   }
 
-  .top-row .resume-photo {
-    margin-bottom: 10px;
-  }
   button {
-    width: 40%;
-    margin-left: 1rem ;
-  }
-
-  
-  .edit-section {
-    max-width: 100%;
-    margin: 10px 0;
-    padding: 15px;
-  }
-
-  .edit-section h3 {
-    font-size: 1.2rem;
-  }
-  .social-links {
-    justify-content: center;
-    gap: 10px;
-  }
-}
-
-/* Even smaller devices (phones ≤ 480px) */
-@media (max-width: 480px) {
-  .resume {
-    padding: 10px;
-  }
-
-  .resume-section h4 {
-    font-size: 0.95rem;
-  }
-
-  .resume-section p {
-    font-size: 0.8rem;
-  }
-
-  .resume.stylish .resume-header h1 {
-    font-size: 1.5rem;
-  }
-
-  .resume.stylish .resume-section h4 {
-    font-size: 1rem;
-  }
-
-  .resume-photo {
-    width: 100px;
-    height: 100px;
-  }
-}
-
-
-/* =================== Mobile Responsive: Section Editor under Section List =================== */
-@media (max-width: 768px) {
-  .app {
-    display: flex;
-    flex-direction: column; 
-  }
-  .editor {
-    order: 1; 
-    width: 97%;
-    margin: 0;
-    border-right: none;
-    border-bottom: 1px solid #e5e7eb;
-    border-radius: 0;
-  }
-
-  .section-editor {
-    order: 2; 
-    width: 97%;
-    margin-top: 0.5rem;
-    border-left: none;
-    border-radius: 0;
-  }
-
-  .preview {
-    width: 97%;
-    order: 3; 
-    margin-top: 10px;
-  }
-}
-/* =================== Laptop Responsive (1024px) =================== */
-/* @media (max-width: 1024px) {
-  .app {
-    display: flex;
-    flex-direction: column; 
-    height: auto;
-  }
-
-  .editor {
-    order: 1; 
-    width: 97%;
-    border-right: none;
-    border-bottom: 1px solid #e5e7eb;
-    padding: 1rem;
-  }
-
-  .section-editor {
-    order: 2; 
-    width: 97%;
-    border-left: none;
-    border-top: 1px solid #e5e7eb;
-    padding: 1rem;
-  }
-
-
-  .preview {
-    order: 3; 
-    width: 97%;
-    margin-top: 1rem;
-  }
-
-  #resume-preview {
-    padding: 15px;
-  }
-
-  .resume {
-    max-width: 750px;
-    margin: 0 auto;
-    padding: 1.5rem;
-  }
-
-  .bottom-row {
-    gap: 15px;
-  }
-
-  .bottom-row .left-col {
-    flex: 1;
-    padding-right: 10px;
-  }
-
-  .bottom-row .right-col {
-    flex: 2;
-    padding-left: 10px;
-  }
-
-  .top-row {
-    gap: 15px;
-  }
-} */
-
-
-/* Default desktop */
-.photo-name-row {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-/* Name style */
-.resume-section.name-section span {
-  font-weight: bold;
-  font-size: 2.2rem; /* desktop font size */
-}
-
-
-/* Mobile */
-@media (max-width: 767px) {
-  .photo-name-row {
-    flex-direction: row; /* still horizontal */
-    align-items: center;
-    gap: 10px;
-  }
-
-  .resume-section.name-section span {
-    font-size: 2rem; /* smaller font */
-  }
-
-  .resume-photo {
-    width: 80px;
-    height: 80px;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
   }
 }
