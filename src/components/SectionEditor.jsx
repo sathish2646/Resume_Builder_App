@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const ROLE_OPTIONS = [
   "Software Engineer",
@@ -6,7 +6,17 @@ const ROLE_OPTIONS = [
   "Backend Developer",
   "Full Stack Developer",
   "Project Manager",
-  "Designer",
+  "Designer", 
+  "Data Scientist",
+  "DevOps Engineer",
+  "Product Manager",
+  "QA Engineer",
+  "Business Analyst",
+  "System Administrator",
+  "Technical Lead",
+  "Consultant",
+  "Intern",
+  "Other",
 ];
 
 const COMPANY_OPTIONS = [
@@ -16,6 +26,16 @@ const COMPANY_OPTIONS = [
   "Facebook",
   "Apple",
   "Netflix",
+  "IBM",
+  "Intel",
+  "Oracle",
+  "Salesforce",
+  "Adobe",
+  "Uber",
+  "Airbnb",
+  "Twitter",
+  "LinkedIn",
+  "Other",
 ];
 
 const DEGREE_OPTIONS = [
@@ -33,9 +53,12 @@ const DEGREE_OPTIONS = [
 ];
 
 export default function SectionEditor({ section, onUpdate }) {
+  const [emailValid, setEmailValid] = useState(true);
+  const [phoneValid, setPhoneValid] = useState(true);
+
   if (!section) return null;
 
-  // --- EXPERIENCE ---
+  // EXPERIENCE
   const handleJobChange = (idx, field, value) => {
     const newJobs = [...(section.jobs || [])];
     newJobs[idx][field] = value;
@@ -53,7 +76,7 @@ export default function SectionEditor({ section, onUpdate }) {
     onUpdate({ jobs: newJobs });
   };
 
-  // --- EDUCATION ---
+  // EDUCATION
   const handleSchoolChange = (idx, field, value) => {
     const newSchools = [...(section.schools || [])];
     newSchools[idx][field] = value;
@@ -74,27 +97,74 @@ export default function SectionEditor({ section, onUpdate }) {
     onUpdate({ schools: newSchools });
   };
 
+  // ✅ VALIDATION for CONTACT SECTION
+  const validateContact = (value) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+/;
+    const phoneRegex = /(\+?\d{1,3}[- ]?)?\d{10}/;
+    const hasEmail = emailRegex.test(value);
+    const hasPhone = phoneRegex.test(value);
+    setEmailValid(hasEmail);
+    setPhoneValid(hasPhone);
+  };
+
+  useEffect(() => {
+    if (section.type === "contact") {
+      validateContact(section.content || "");
+    }
+  }, [section.content]);
+
   return (
     <div>
-   <div className="edit-section">
-  <h3>Edit {section.title}</h3>
-  <label>Title :</label>
-  <input
-    value={section.title}
-    onChange={(e) => onUpdate({ title: e.target.value })}
-  />
+      <div className="edit-section">
+        <h3>Edit {section.title}</h3>
 
-  <label>Content :</label>
-  <textarea
-    rows={5}
-    cols={30}
-    value={section.content}
-    onChange={(e) => onUpdate({ content: e.target.value })}
-  />
-</div>
+        <label>Title :</label>
+        <input
+          value={section.title}
+          onChange={(e) => onUpdate({ title: e.target.value })}
+        />
+
+        <label>Content :</label>
+        <textarea
+          rows={5}
+          cols={30}
+          value={section.content}
+          onChange={(e) => {
+            onUpdate({ content: e.target.value });
+            if (section.type === "contact") validateContact(e.target.value);
+          }}
+          placeholder={
+            section.type === "contact"
+              ? "Email: example@gmail.com\nPhone: 9876xxxxxx  \nAddress: ..."
+              : "Enter your content..."
+          }
+        />
+
+        {section.type === "contact" && (
+          <div style={{ marginTop: "8px" }}>
+            <p
+              style={{
+                color: emailValid ? "green" : "red",
+                fontWeight: "bold",
+                marginBottom: "4px",
+              }}
+            >
+              {emailValid ? " Valid Email" : " Invalid Email"}
+            </p>
+            <p
+              style={{
+                color: phoneValid ? "green" : "red",
+                fontWeight: "bold",
+              }}
+            >
+              {phoneValid ? " Valid Phone" : " Invalid Phone"}
+            </p>
+          </div>
+        )}
+      </div>
 
       <div className="section-editor">
-        {/* Experience Section ////////////////////////////////////////////////////*/}
+        {/* EXPERIENCE Section */}
         {section.type === "experience" && (
           <div>
             {(section.jobs || []).map((job, idx) => (
@@ -139,7 +209,7 @@ export default function SectionEditor({ section, onUpdate }) {
           </div>
         )}
 
-        {/* Education Section///////////////////////////////////////////////////////// */}
+        {/* EDUCATION Section */}
         {section.type === "education" && (
           <div>
             {(section.schools || []).map((school, idx) => (
@@ -176,7 +246,9 @@ export default function SectionEditor({ section, onUpdate }) {
                   type="text"
                   placeholder="85% / A+"
                   value={school.percentage}
-                  onChange={(e) => handleSchoolChange(idx, "percentage", e.target.value)}
+                  onChange={(e) =>
+                    handleSchoolChange(idx, "percentage", e.target.value)
+                  }
                 />
 
                 <button className="remove-btn" onClick={() => removeSchool(idx)}>

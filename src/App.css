@@ -261,22 +261,94 @@ button:hover {
   margin: 0.3rem 0;
 }
 
-/* === MODERN TEMPLATE === ////////////////////////////////////*/
 .resume.modern {
-  border-left: 6px solid #3b82f6; /* Blue left bar */
-  padding-left: 1.5rem;
   background: #ffffff;
+  color: #1f2937;
   font-family: "Inter", Arial, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.5;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
-.resume.modern .resume-section h4 {
-  background: #f3f4f6;
-  padding: 0.3rem 0.6rem;
-  border-radius: 4px;
-  color: #2563eb;
+
+/* HEADER */
+.resume.modern .photo-name-row {
+  text-align: center;
+  padding: 1rem 0.5rem;
+  background-color: #1e3a8a;
+  color: #fff;
+}
+.resume.modern .photo-name-row span {
+  font-size: 26px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+/* JOB TITLE */
+.resume.modern .job-title {
+  text-align: center;
+  background-color: #10b981;
+  color: #fff;
+  font-size: 16px;
   font-weight: 600;
+  padding: 0.3rem 0;
 }
+
+/* CONTACT */
+.resume.modern .contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background: #f1f5f9;
+  padding: 0.4rem 0.8rem;
+  font-size: 13px;
+  color: #1e293b;
+}
+.resume.modern .contact-row i {
+  color: #1e3a8a;
+  margin-right: 4px;
+}
+
+/* SECTION HEADINGS */
+.resume.modern .resume-section h4 {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #1e3a8a;
+  font-weight: 700;
+  border-bottom: 2px solid #10b981;
+  margin-top: 1.2rem;
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.2rem;
+}
+
+/* CONTENT */
 .resume.modern .resume-section p {
-  margin: 0.4rem 0;
+  margin: 0.3rem 0;
+  color: #374151;
+}
+
+/* FOOTER */
+.resume.modern .signature {
+  text-align: right;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 0.8rem;
+}
+
+/* PRINT */
+@media print {
+  .resume.modern {
+    box-shadow: none;
+    border: none;
+  }
+  button {
+    display: none;
+  }
 }
 
 /* === MINIMAL TEMPLATE ===//////////////////////////////////// */
@@ -711,7 +783,7 @@ button:hover {
   gap: 35px;
 }
 .resume-section.name-section span {
-  font-size: 4.5rem;
+  font-size: 3.2rem;
   font-weight: bold;
 }
 

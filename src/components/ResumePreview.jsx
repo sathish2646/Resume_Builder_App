@@ -360,6 +360,7 @@ export default function ResumePreview({
                             <span >
                               {section.content}
                             </span>
+                            
 
                           </div>
                         ))}
@@ -378,6 +379,7 @@ export default function ResumePreview({
                           >
                             <h4>{section.title}</h4>
                             {renderSectionContent(section)}
+                            
                           </div>
                         )}
                       </Draggable>

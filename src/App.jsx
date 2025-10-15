@@ -9,13 +9,13 @@ const genId = () => `${Date.now().toString(36)}_${Math.random().toString(36).sli
 
 const PALETTE = [
   { type: "name", title: "Full Name", content: "Enter your full name" },
-  { type: "contact", title: "Contact", content: "Email, phone,Address..." },
+  { type: "contact", title: "Contact", content:  "Email:example@gmail.com\nPhone no:9876856554  \nAddress: ..." },
   { type: "skills", title: "Skills", content: "List of skills..." },
   { type: "Language", title: "Language", content: "Tamil,English....." },
   { type: "summary", title: "Summary", content: "Write a short summary..." },
   { type: "experience", title: "Experience", content: "jobs,role,company...", jobs: [] },
   { type: "education", title: "Education", content: "school/college name,degree,year, percentage....", schools: [] },
-  { type: "projects", title: "Projects", content: "Project description..." },
+  { type: "projects", title: "Projects", content: "Project Title & description..." },
   { type: "social", title: "Social Media", content: "Enter socialLinks..." }
 
 ];
